@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/login">To AdminPanel</a>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1 class="text-primary">Thanks for visiting Us!</h1>
+  </div>
+</div>
+
+<div class="container" *ngIf="!loading">
+  <h2 class="text-center text-secondary">Questionnaires here</h2>
+  <div class="list-group text-body">
+    <a *ngFor="let i of infoList" class="list-group-item list-group-item-action" (click)="toTestView(i.id)">{{i.content}}</a>
+  </div>
+</div>

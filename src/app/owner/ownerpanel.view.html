@@ -1,0 +1,21 @@
+<div class="d-flex flex-column" style="min-height: 100vh; height: auto;">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+    </div>
+  </nav>
+
+  <div class="container-fluid d-flex flex-grow-1" *ngIf="!loading">
+    <div class="row flex-grow-1">
+      <div class="col-3" style="background-color: #e9ecef; overflow-y: scroll;">
+        <h6>Titles</h6>
+        <a class="list-group-item list-group-item-action" *ngFor="let ts of naireList; let j=index"(click)="onClicked(j)">{{ts.content}}</a>
+        <a class="list-group-item list-group-item-action bg-success" (click)="addNew()">Add New..</a>
+      </div>
+      <div class="col-9 pl-3">
+        <h6>Details</h6>
+        <nairedetail [currentNaire]="selected" (removed)="onRemove()"></nairedetail>
+      </div>
+    </div>
+  </div>
+</div>

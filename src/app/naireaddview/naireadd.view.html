@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/owner">Back</a>
+  </div>
+</nav>
+
+<div class="d-flex flex-column pt-5 pl-5 pr-5">
+
+  <div class="jumbotron">
+    <textarea class="form-control" rows="3" [(ngModel)]="title"></textarea>
+  </div>
+
+  <div class="p-3">
+    <div *ngFor="let qu of naire; let i=index">
+      <textarea class="form-control" style="font-size: 13px;" rows="2" [(ngModel)]="qu.question"></textarea>
+
+      <div class="p-4">
+        <div *ngFor="let aw of naire[i].answers; let j=index" class="p-2">
+          <input class="form-control" style="font-size: small;" [(ngModel)]="naire[i].answers[j].value" />
+        </div>
+        <div class="p-2">
+          <button type="button" class="btn btn-secondary" style="font-size: 12px;" (click)="addNewAnswer(i)">Add New
+            Answer..</button>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <button type="button" class="btn btn-primary" style="font-size: 14px;" (click)="addNewQuestion()">Add New
+      Question..</button>
+  </div>
+
+  <div class="d-flex justify-content-center mb-4">
+    <button type="button" class="btn btn-success" style="font-size: 16px;" (click)="saveNaire()">Save</button>
+  </div>
+</div>
+<!-- <a class="list-group-item list-group-item-action" (click)="saveNaire()">Save</a> -->

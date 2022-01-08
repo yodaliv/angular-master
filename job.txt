@@ -1,0 +1,116 @@
+Required to build a system for aiding in capturing online feedback for primary research. The questionnaire system will have a secure administration backend for questionnaire and question creation as well as providing a view for administrators to see the responses. It will be developed using Laravel. The questionnaires will be shown to users/responders via an unsecured interface that can be developed in either Laravel or via AngularJS.
+
+2.2 TASK
+You are required to build a system for aiding you in capturing online feedback for primary research. The questionnaire system will have a secure administration backend for questionnaire and question creation as well as providing a view for administrators to see the responses. It will be developed using Laravel. The questionnaires will be shown to users/responders via an unsecured interface that can be developed in either Laravel or via AngularJS.
+ 
+2.2.1 Required Build Features
+ 
+All of these features below are required to be built.
+ 
+1 An unsecured user/responder front end (questionnaire answering) that stores the responses in DB.
+ 
+2 A secured back-end that allows questionnaire owners to login and manage questionnaires and questions
+(multi choice questions only (quantitative research))
+ 
+3 A questionnaire owner back-end view to see the questionnaire responses.
+ 
+4 A switch that allows the questionnaire owner to put the questionnaire into a live completion mode (for users to complete) or into development mode (to use when either developing or after completion of receiving responses.)
+ 
+5 A questionnaire (minimum of 5 questions) and get 5 people to complete them..
+
+get /
+Landing Page
+
+response:
+{
+	content: string;
+	id: number;
+}[]
+
+get /{id}
+TestPage
+
+response:
+{
+	id: number;
+	title: string;
+	questions: {
+		id: number;
+		content: string;
+		options: string[];
+	}
+}
+
+api/saveanswer
+Store answers.
+
+request:
+{
+	id: number;
+	result: number[];
+}
+
+response:
+Status Code
+
+api/nairesofowner
+Get current owner's naireinfolist
+
+request:
+{
+}
+
+response:
+{
+	id:number;
+	title:string;
+}[]
+
+api/getnaireresult
+Get current naireresult
+
+request:
+{
+	id:number;
+}
+
+reponse:
+{
+	id:number;
+	content:string;
+	questions: {
+		id:number;
+		content:string;
+		options:string[];
+	}
+
+	result: number[][];
+}
+
+api/removenaire
+Delete naire from db
+
+request:
+{
+	id: number;
+}
+
+response:
+
+api/addnaire
+Append a naire into db
+
+request:
+{
+	naire: {
+		id: number;
+		content: string;
+		questions: {
+			id: number;
+			content: string;
+			options: string[];
+		}
+	}
+}
+
+response:

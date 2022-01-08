@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/">Home</a>
+  </div>
+</nav>
+
+<div class="container-fluid p-5" *ngIf="!loading">
+  <div class="jumbotron">
+
+    <h2>{{naire.content}}</h2>
+
+    <div class="p-2" *ngFor="let item of naire.questions; let i = index">
+      {{item.content}}
+      <div class="form-check m-2" *ngFor="let aw of item.options; let j=index">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name={{i}} value={{j}} (change)="radioChangeHandler($event)">
+          {{aw}}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid d-flex justify-content-center mb-5">
+  <button type="button" class="btn btn-success" (click)="sendAnswer()">Submit</button>
+</div>

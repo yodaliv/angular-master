@@ -1,0 +1,17 @@
+<div class="container-fluid" *ngIf="currentNaire >= 0 && !loading">
+  <h3>{{currentInfo.title}}</h3>
+
+  <div class="p-2 m-1" *ngFor="let cq of currentInfo.questions; let i=index"
+    style="width: fit-content; background-color: rgb(197, 195, 191);">
+    <p>{{cq.content}}</p>
+    <div class="d-flex flex-row justify-content-between w-100 p-1" *ngFor="let aw of cq.options; let j=index">
+      <span class="text-info">{{aw}}</span>
+      <span class="badge badge-info">{{currentInfo.result[i][j]}}</span>
+    </div>
+    <hr />
+  </div>
+  <div class="p-5">
+    <button type="button" class="btn btn-danger" (click)="removeThis()">Remove</button>
+  </div>
+
+</div>
